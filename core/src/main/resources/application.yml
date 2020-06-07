@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wide
+    username: wide-core
+    password: wide-core
+  jpa:
+    hibernate:
+      ddl-auto: update

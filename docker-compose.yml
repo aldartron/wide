@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  core-postgres-data:
+    driver: local
+
+services:
+  core-postgres:
+    image: postgres
+    volumes:
+      - core-postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: wide
+      POSTGRES_USER: wide-core
+      POSTGRES_PASSWORD: wide-core
+    ports:
+      - 5432:5432
