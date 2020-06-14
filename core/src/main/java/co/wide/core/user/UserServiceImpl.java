@@ -8,22 +8,29 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
     public User createUser(User user) {
-        return userRepository.save(user);
+        var saved = userRepository.save(
+                userMapper.toEntity(user)
+        );
+        return userMapper.fromEntity(saved);
     }
 
     @Override
     public List<User> getAll() {
-        return userRepository.findAll();
+        return userMapper.fromEntities(
+                userRepository.findAll()
+        );
     }
 
     @Override
     public User getById(Long id) {
-        return userRepository.getOne(id);
+        return userMapper.fromEntity(
+                userRepository.getOne(id)
+        );
     }
 
 }
