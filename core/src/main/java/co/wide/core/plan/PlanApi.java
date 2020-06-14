@@ -1,4 +1,4 @@
 package co.wide.core.plan;
 
-public interface PlaneAPI {
+public interface PlanApi {
 }
