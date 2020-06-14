@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket conf() {
+    public Docket config() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .paths(PathSelectors.any())
@@ -27,8 +27,9 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()
-                .title("Wide card API")
-                .description("Simple API")
+                .title("Wide core API")
+                .description("Простая документация API")
+                .version("0.0.1")
                 .build();
     }
 
