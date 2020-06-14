@@ -1,6 +1,7 @@
 package co.wide.core.user;
 
 import co.wide.core.card.Card;
+import lombok.Data;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * Здесь только прикладная информация о нём, логин и пароль будут
  * в другой сущности
  */
+@Data
 public class User {
 
     private Long id;
