@@ -1,4 +1,4 @@
-package co.wide.core.configuration;
+package co.wide.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
