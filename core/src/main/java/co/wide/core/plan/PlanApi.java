@@ -9,7 +9,7 @@ import java.util.List;
 public interface PlanApi {
 
     @PostMapping
-    Plan createPlan(@PathVariable String name);
+    Plan createPlan(@RequestParam String name);
 
     @GetMapping
     List<Plan> getPlans();
