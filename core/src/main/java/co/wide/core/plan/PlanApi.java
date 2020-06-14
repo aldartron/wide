@@ -16,4 +16,5 @@ public interface PlanApi {
 
     @GetMapping("/{id}")
     Plan getPlan(@PathVariable Long id);
+    
 }
