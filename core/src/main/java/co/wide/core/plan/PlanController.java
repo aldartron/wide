@@ -10,16 +10,17 @@ public class PlanController implements PlanApi {
 
     @Override
     public Plan createPlan(String name) {
-        return null;
+        return planService.createPlan(name);
     }
 
     @Override
     public List<Plan> getPlans() {
-        return null;
+        return planService.getPlans();
     }
 
     @Override
     public Plan getPlan(Long id) {
-        return null;
+        return planService.getPlan(id);
     }
+
 }

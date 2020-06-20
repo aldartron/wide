@@ -9,20 +9,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PlanServiceImpl implements PlanService {
     private final PlanRepository planRepository;
+    private final PlanMapper planMapper;
 
     @Override
     public Plan createPlan(String name) {
-        return null;
+        var entity = new PlanEntity();
+        entity.setName(name);
+
+        return planMapper.fromEntity(
+                planRepository.save(entity));
     }
 
     @Override
     public List<Plan> getPlans() {
-        return null;
+        return planMapper.fromEntities(
+                planRepository.findAll());
     }
 
     @Override
     public Plan getPlan(Long id) {
-        return null;
+        return planMapper.fromEntity(
+                planRepository.getOne(id));
     }
 
 }

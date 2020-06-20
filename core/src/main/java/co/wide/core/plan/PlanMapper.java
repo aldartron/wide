@@ -11,7 +11,7 @@ public interface PlanMapper {
 
     PlanEntity toEntity(Plan plan);
 
-    List<Plan> fromEntities(List<Plan> planList);
+    List<Plan> fromEntities(List<PlanEntity> planList);
 
     List<PlanEntity> toEntities(List<Plan> plans);
 
