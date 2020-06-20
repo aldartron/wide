@@ -6,8 +6,10 @@ public interface UserService {
 
     User createUser(User user);
 
+    User getById(Long id);
+
     List<User> getAll();
 
-    User getById(Long id);
+    List<User> getByPlan(Long planId);
 
 }

@@ -20,6 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getById(Long id) {
+        return userMapper.fromEntity(
+                userRepository.getOne(id)
+        );
+    }
+
+    @Override
     public List<User> getAll() {
         return userMapper.fromEntities(
                 userRepository.findAll()
@@ -27,10 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(Long id) {
-        return userMapper.fromEntity(
-                userRepository.getOne(id)
-        );
+    public List<User> getByPlan(Long planId) {
+        return null;
     }
-
 }
