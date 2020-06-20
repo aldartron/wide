@@ -1,4 +1,4 @@
-package co.wide.core.controller;
+package co.wide.core;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

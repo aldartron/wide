@@ -3,8 +3,6 @@ allprojects {
     apply plugin: 'project-report'
 
     group = 'co.wide'
-
-
 }
 
 subprojects {
@@ -12,6 +10,7 @@ subprojects {
     sourceCompatibility = '14'
 
     repositories {
+        mavenCentral()
         mavenLocal()
         jcenter()
         maven { url "https://repo.spring.io/milestone" }

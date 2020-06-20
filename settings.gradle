@@ -1,2 +1,2 @@
 rootProject.name = 'wide'
-include ':core'
+include ':core', ':render'
