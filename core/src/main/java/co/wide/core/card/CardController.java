@@ -1,11 +1,13 @@
 package co.wide.core.card;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class CardController implements CardApi {
 
-    private CardService cardService;
+    private final CardService cardService;
 
     @Override
     public Card getCard(Long id) {

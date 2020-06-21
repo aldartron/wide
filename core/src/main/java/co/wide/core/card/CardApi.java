@@ -2,7 +2,6 @@ package co.wide.core.card;
 
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @RequestMapping("/api/card")
 public interface CardApi {
 
