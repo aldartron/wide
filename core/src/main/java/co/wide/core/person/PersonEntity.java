@@ -1,4 +1,4 @@
-package co.wide.core.user;
+package co.wide.core.person;
 
 import co.wide.core.card.CardEntity;
 import co.wide.core.plan.PlanEntity;
@@ -9,7 +9,8 @@ import java.util.List;
 
 @Data
 @Entity
-public class UserEntity {
+@Table(name = "person")
+public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO: change to SEQUENCE
@@ -21,12 +22,10 @@ public class UserEntity {
 
     private String lastName;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "person")
     private List<PlanEntity> plans;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "person")
     private List<CardEntity> cards;
 
 }

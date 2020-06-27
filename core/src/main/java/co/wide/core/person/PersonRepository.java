@@ -1,7 +1,7 @@
-package co.wide.core.user;
+package co.wide.core.person;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long> {}
+public interface PersonRepository extends JpaRepository<PersonEntity, Long> {}

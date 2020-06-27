@@ -1,9 +1,11 @@
 package co.wide.core.plan;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 @RequiredArgsConstructor
 public class PlanController implements PlanApi {
     private final PlanService planService;
