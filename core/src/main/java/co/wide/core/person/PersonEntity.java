@@ -1,6 +1,7 @@
-package co.wide.core.user;
+package co.wide.core.person;
 
 import co.wide.core.card.CardEntity;
+import co.wide.core.plan.PlanEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,17 +9,23 @@ import java.util.List;
 
 @Data
 @Entity
-public class UserEntity {
+@Table(name = "person")
+public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO: change to SEQUENCE
     private Long id;
+
     private String username;
+
     private String firstName;
+
     private String lastName;
-    //    private List<WideMap> plans; TODO: add after plan feature implemented
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+
+    @OneToMany(mappedBy = "person")
+    private List<PlanEntity> plans;
+
+    @OneToMany(mappedBy = "person")
     private List<CardEntity> cards;
 
 }

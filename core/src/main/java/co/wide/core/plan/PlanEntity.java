@@ -1,8 +1,11 @@
 package co.wide.core.plan;
 
+import co.wide.core.person.PersonEntity;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Data
 @Entity
@@ -11,10 +14,10 @@ public class PlanEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false)
     private Long id;
-
-    @Column(name = "name", nullable = false)
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private PersonEntity person;
 
 }

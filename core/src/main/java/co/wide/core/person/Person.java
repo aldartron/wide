@@ -1,6 +1,7 @@
-package co.wide.core.user;
+package co.wide.core.person;
 
 import co.wide.core.card.Card;
+import co.wide.core.plan.Plan;
 import lombok.Data;
 
 import java.util.List;
@@ -11,13 +12,13 @@ import java.util.List;
  * в другой сущности
  */
 @Data
-public class User {
+public class Person {
 
     private Long id;
     private String username;
     private String firstName;
     private String lastName;
-//    private List<WideMap> plans; TODO: add after plan feature implemented
+    private List<Plan> plans;
     private List<Card> cards;
 
 }
