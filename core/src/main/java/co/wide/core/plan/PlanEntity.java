@@ -3,9 +3,7 @@ package co.wide.core.plan;
 import co.wide.core.person.PersonEntity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
