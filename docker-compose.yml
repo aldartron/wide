@@ -11,7 +11,7 @@ services:
       - core-postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: wide
-      POSTGRES_USER: wide-core
-      POSTGRES_PASSWORD: wide-core
+      POSTGRES_USER: widecore
+      POSTGRES_PASSWORD: widecore
     ports:
       - 5432:5432

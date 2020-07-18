@@ -17,5 +17,5 @@ public class PlanEntity {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private PersonEntity person;
-    
+
 }
