@@ -1,7 +1,7 @@
 plugins {
+    id 'java'
     id 'org.springframework.boot' version "${springBootVersion}"
     id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
-    id 'java'
 }
 
 version = '0.0.1-SNAPSHOT'
@@ -17,28 +17,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
-    annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+    runtimeOnly 'org.postgresql:postgresql'
 
     compile "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
     runtime "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
     runtime "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
 
-    runtimeOnly 'org.postgresql:postgresql'
+    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    compile 'io.springfox:springfox-swagger2:2.9.2'
-    compile 'io.springfox:springfox-swagger-ui:2.9.2'
-
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-}
-
-springBoot {
-    buildInfo()
 }
 
 test {

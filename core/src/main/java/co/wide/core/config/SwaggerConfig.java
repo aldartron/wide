@@ -1,5 +1,7 @@
 package co.wide.core.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@RequiredArgsConstructor
 public class SwaggerConfig {
+
+    private final BuildProperties buildProperties;
 
     @Bean
     public Docket config() {
@@ -29,7 +34,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Wide core API")
                 .description("Простая документация API")
-                .version("0.0.1")
+                .version(buildProperties.getVersion())
                 .build();
     }
 
