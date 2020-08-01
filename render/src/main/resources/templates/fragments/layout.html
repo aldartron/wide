@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div th:fragment="card-node">
+        <h4>Card title</h4>
+        <p>Related to: The card, Another card, One more card</p>
+    </div>
+
+    <div th:fragment="card-side">
+        <h2>Card title</h2>
+        <h3>Description:</h3>
+        <p>Short description of topic related to parent card</p>
+        <h3>Resources:</h3>
+        <ul>
+            <li>resource</li>
+            <li>resource</li>
+            <li>resource</li>
+            <li>resource</li>
+        </ul>
+        <h3>My Notes"</h3>
+        <p>Dfjdlfjsl jf;lsd j;lsdjf sofjoweijfw[ojfsdl;fj sdlfj slfjs;fjs jdsfj lsfj lsjf lsjfj sdlfjweoeofo df</p>
+    </div>
+
+    <div th:fragment="plan">
+        <div>
+            <h4>Card 1</h4>
+            <p>Related to: 2, 4</p>
+        </div>
+        <div>
+            <h4>Card 2</h4>
+            <p>Related to: 2, 4</p>
+        </div>
+        <div>
+            <h4>Card 3</h4>
+            <p>Related to: 2, 4</p>
+        </div>
+        <div>
+            <h4>Card 4</h4>
+            <p>Related to: 2, 4</p>
+        </div>
+        <div>
+            <h4>Card 5</h4>
+            <p>Related to: 2, 4</p>
+        </div>
+    </div>
+
+</body>
+</html>
