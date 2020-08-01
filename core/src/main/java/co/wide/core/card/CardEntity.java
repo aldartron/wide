@@ -1,9 +1,11 @@
 package co.wide.core.card;
 
 import co.wide.core.person.PersonEntity;
+import co.wide.core.resource.ResourceEntity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,7 +20,10 @@ public class CardEntity {
     @JoinColumn(name = "person_id")
     private PersonEntity person;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn("card_id")
-//    private List<ResourceEntity> resources; TODO: add after Resource feature
+    @OneToMany(
+            mappedBy = "card",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    private List<ResourceEntity> resources;
 }

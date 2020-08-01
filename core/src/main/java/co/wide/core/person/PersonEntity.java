@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "person")
-public class PersonEntity {
+public class PersonEntity { //TODO: rename it somehow plz
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // TODO: change to SEQUENCE
