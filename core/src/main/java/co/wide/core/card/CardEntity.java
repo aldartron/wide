@@ -13,6 +13,7 @@ import java.util.List;
 public class CardEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String comment;

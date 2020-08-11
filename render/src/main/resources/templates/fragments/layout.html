@@ -9,9 +9,18 @@
 </head>
 <body>
 
-    <div th:fragment="card-node">
-        <h4>Card title</h4>
-        <p>Related to: The card, Another card, One more card</p>
+    <div th:fragment="card-node(card)">
+        <h4 th:text="${card.title}">Card title</h4>
+        <small>Id: <span th:text="${card.id}">123</span></small>
+        <p>Related to:
+            <ul>
+<!--                <li th:each="relation : ${card.relations}">-->
+<!--                    <span th:text="${relation.id} + ' : ' +${relation.title} ">-->
+<!--                        Related Card-->
+<!--                    </span>-->
+<!--                </li>-->
+            </ul>
+        </p>
     </div>
 
     <div th:fragment="card-side">
