@@ -1,9 +1,12 @@
 package co.wide.auth.user;
 
+import co.wide.auth.common.CryptoConverter;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Data
@@ -18,6 +21,7 @@ public class UserEntity {
 
     private String login;
 
+    @Convert(converter = CryptoConverter.class)
     private String password;
 
     // TODO Добавить возможность нескольких ролей. возможно отдельную таблицу-справочник

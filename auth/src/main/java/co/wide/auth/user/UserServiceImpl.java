@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
     public void checkUser(UserEntity userEntity,
                           AuthenticateUserRequest request,
                           Supplier<Exception> supplier) throws Exception {
-        //TODO расшифровка пароля
 
         if (!userEntity.getPassword().equals(request.getPassword())) {
             throw supplier.get();

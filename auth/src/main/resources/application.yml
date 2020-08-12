@@ -15,3 +15,9 @@ auth:
 jwt:
   key: $ecret-key4or-wide#-Auth111-$ervice
   expiration: 8640000
+
+crypto:
+  encrypt:
+    key: SecureKeyForPass
+    cipher: AES/ECB/PKCS5Padding
+    algorithm: AES

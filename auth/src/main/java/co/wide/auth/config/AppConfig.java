@@ -20,4 +20,13 @@ public class AppConfig {
     @Value("${auth.password}")
     private String authPassword;
 
+    @Value("${crypto.encrypt.key}")
+    private String cryptoEncryptKey;
+
+    @Value("${crypto.encrypt.cipher}")
+    private String cryptoEncryptCipher;
+
+    @Value("${crypto.encrypt.algorithm}")
+    private String cryptoEncryptAlgorithm;
+
 }
