@@ -20,11 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void checkUser(UserEntity userEntity, AuthenticateUserRequest request, Supplier<Exception> supplier) {
+    public void checkUser(UserEntity userEntity,
+                          AuthenticateUserRequest request,
+                          Supplier<Exception> supplier) throws Exception {
         //TODO расшифровка пароля
 
         if (!userEntity.getPassword().equals(request.getPassword())) {
-            supplier.get();
+            throw supplier.get();
         }
     }
 

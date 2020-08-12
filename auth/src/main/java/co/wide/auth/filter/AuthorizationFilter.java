@@ -22,12 +22,11 @@ public class AuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String headerAuth = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        if (StringUtils.isEmpty(headerAuth) ||
-                !authorizationProvider.isValidAuthorizationHeader(headerAuth)) {
+        if (StringUtils.isEmpty(headerAuth) || !authorizationProvider.isValidAuthorizationHeader(headerAuth)) {
             response.setStatus(HttpStatus.BAD_REQUEST.value());
+        } else {
+            filterChain.doFilter(request, response);
         }
-
-        filterChain.doFilter(request, response);
     }
 
 }

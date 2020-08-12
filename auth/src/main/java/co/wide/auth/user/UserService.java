@@ -8,6 +8,8 @@ public interface UserService {
 
     UserEntity getUser(String login) throws Exception;
 
-    void checkUser(UserEntity user, AuthenticateUserRequest request, Supplier<Exception> supplier);
+    void checkUser(UserEntity user,
+                   AuthenticateUserRequest request,
+                   Supplier<Exception> supplier) throws Exception;
 
 }

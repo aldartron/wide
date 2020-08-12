@@ -18,17 +18,22 @@ public class JwtUtil {
     private final AppConfig appConfig;
 
     public String generateTokenByUser(UserEntity user) {
-        return createToken(user.getLogin(), user.getId(),
-                Map.of(ROLES, List.of(user.getRole())));
+        String subject = null;
+
+        if (user.getId() != null) {
+            subject = user.getId().toString();
+        }
+
+        return createToken(subject,
+                Map.of(ROLES, user.getRole() == null ? Collections.emptyList() : List.of(user.getRole())));
     }
 
-    private String createToken(String login, Long id, Map<String, Object> claims) {
+    private String createToken(String subject, Map<String, Object> claims) {
         Date creationDate = new Date();
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(login)
-                .setId(String.valueOf(id))
+                .setSubject(subject)
                 .setIssuedAt(creationDate)
                 .setExpiration(createExpirationDate(creationDate))
                 .signWith(getHmacShaKey())
@@ -37,7 +42,7 @@ public class JwtUtil {
 
     private Date createExpirationDate(Date creationDate) {
         long expirationSeconds = Long.parseLong(appConfig.getJwtExpiration());
-        return new Date(creationDate.getTime() * expirationSeconds * 1000);
+        return new Date(creationDate.getTime() + expirationSeconds * 1000);
     }
 
     private SecretKey getHmacShaKey() {

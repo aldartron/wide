@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wide
+    username: wideauth
+    password: wideauth
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+auth:
+  login: wideauth
+  password: wideauth
+
+jwt:
+  key: $ecret-key4or-wide#-Auth111-$ervice
+  expiration: 8640000
