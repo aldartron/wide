@@ -20,7 +20,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String headerAuth = request.getHeader(HttpHeaders.AUTHORIZATION);
+        var headerAuth = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if (StringUtils.isEmpty(headerAuth) || !authorizationProvider.isValidAuthorizationHeader(headerAuth)) {
             response.setStatus(HttpStatus.BAD_REQUEST.value());

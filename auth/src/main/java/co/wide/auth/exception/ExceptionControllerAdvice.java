@@ -28,4 +28,9 @@ public class ExceptionControllerAdvice {
         return ResponseEntity.ok(new ErrorMessage("Оооойй дурак!!! обязательные поля не задал!"));
     }
 
+    @ExceptionHandler({RegistrationException.class})
+    private ResponseEntity<ErrorMessage> handelMethodArgumentNotValidException(RegistrationException e) {
+        return ResponseEntity.ok(new ErrorMessage("Ужк есть такой красавец!"));
+    }
+
 }

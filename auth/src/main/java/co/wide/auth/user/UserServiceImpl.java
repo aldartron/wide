@@ -1,10 +1,11 @@
 package co.wide.auth.user;
 
-import co.wide.auth.authenticate.AuthenticateUserRequest;
+import co.wide.auth.authenticate.AuthenticateUserRegistrationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.naming.AuthenticationException;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Service
@@ -14,17 +15,29 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
     @Override
-    public UserEntity getUser(String login) throws Exception {
-        return repository.findByLogin(login)
-                .orElseThrow(AuthenticationException::new);
+    public Optional<UserEntity> getUser(String login) {
+        return repository.findByLogin(login);
     }
 
     @Override
-    public void checkUser(UserEntity userEntity,
-                          AuthenticateUserRequest request,
-                          Supplier<Exception> supplier) throws Exception {
+    public UserEntity createUser(AuthenticateUserRegistrationRequest request) {
+        var userEntity = new UserEntity();
 
-        if (!userEntity.getPassword().equals(request.getPassword())) {
+        userEntity.setLogin(request.getLogin());
+        userEntity.setPassword(request.getPassword());
+        userEntity.setRole(request.getRole());
+
+        return repository.save(userEntity);
+    }
+
+    @Override
+    public <T, R> void checkUser(Function<UserEntity, T> userFunction,
+                                 UserEntity userEntity,
+                                 Function<R, T> requestFunction,
+                                 R request,
+                                 Supplier<Exception> supplier) throws Exception {
+
+        if (!userFunction.apply(userEntity).equals(requestFunction.apply(request))) {
             throw supplier.get();
         }
     }

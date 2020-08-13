@@ -29,7 +29,7 @@ class JsonBuilderTest {
                 .list(List.of("Трудяга", "Парень"))
                 .build();
 
-        String json = JsonBuilder.convertToJson(obj);
+        var json = JsonBuilder.convertToJson(obj);
 
         assertEquals(json,
                 "{\"name\":\"Вася\"," +
@@ -40,7 +40,7 @@ class JsonBuilderTest {
 
     @Test
     public void convert_to_json_empty() {
-        String json = JsonBuilder.convertToJson(null);
+        var json = JsonBuilder.convertToJson(null);
 
         assertTrue(StringUtils.isBlank(json));
     }

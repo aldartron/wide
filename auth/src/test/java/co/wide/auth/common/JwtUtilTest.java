@@ -35,18 +35,18 @@ class JwtUtilTest {
 
     @Test
     public void jwt_generate_token_by_user_success() {
-        UserEntity userEntity = new UserEntity();
+        var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
         userEntity.setLogin("Dog");
         userEntity.setRole("TESTER");
 
-        String token = jwtUtil.generateTokenByUser(userEntity);
+        var token = jwtUtil.generateTokenByUser(userEntity);
         Claims body = getClaims(token);
 
-        String subject = body.getSubject();
+        var subject = body.getSubject();
         //noinspection unchecked
         List<String> list = body.get("roles", List.class);
-        String role = list.stream().findFirst().orElseGet(() -> {
+        var role = list.stream().findFirst().orElseGet(() -> {
             Assert.fail("Исключения быть не должно");
             return null;
         });
@@ -57,26 +57,26 @@ class JwtUtilTest {
 
     @Test
     public void jwt_generate_token_by_user_only_subject_success() {
-        UserEntity userEntity = new UserEntity();
+        var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
 
-        String token = jwtUtil.generateTokenByUser(userEntity);
+        var token = jwtUtil.generateTokenByUser(userEntity);
         Claims body = getClaims(token);
 
-        String id = body.getSubject();
+        var id = body.getSubject();
 
         assertEquals(id, String.valueOf(userEntity.getId()));
     }
 
     @Test
     public void jwt_generate_token_by_user_empty() {
-        UserEntity userEntity = new UserEntity();
+        var userEntity = new UserEntity();
 
-        String token = jwtUtil.generateTokenByUser(userEntity);
+        var token = jwtUtil.generateTokenByUser(userEntity);
         Claims body = getClaims(token);
 
-        String subject = body.getSubject();
-        String id = body.getId();
+        var subject = body.getSubject();
+        var id = body.getId();
         //noinspection unchecked
         List<String> list = body.get("roles", List.class);
 

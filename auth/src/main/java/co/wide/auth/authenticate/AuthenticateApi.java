@@ -14,4 +14,8 @@ public interface AuthenticateApi {
     ResponseEntity<AuthenticateUserResponse> login(
             @RequestBody @Valid AuthenticateUserRequest request) throws Exception;
 
+    @PostMapping("/registration")
+    ResponseEntity<AuthenticateUserResponse> registration(
+            @RequestBody @Valid AuthenticateUserRegistrationRequest request) throws Exception;
+
 }

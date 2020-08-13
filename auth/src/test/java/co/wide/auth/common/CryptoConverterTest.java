@@ -28,32 +28,32 @@ class CryptoConverterTest {
 
     @Test
     public void convert_to_database_column_success() {
-        String pass = "1234";
-        String cipher = cryptoConverter.convertToDatabaseColumn(pass);
+        var pass = "1234";
+        var cipher = cryptoConverter.convertToDatabaseColumn(pass);
 
         assertEquals(pass, cryptoConverter.convertToEntityAttribute(cipher));
     }
 
     @Test
     public void convert_to_database_column_fail() {
-        String pass = "1234";
-        String cipher = cryptoConverter.convertToDatabaseColumn("5566");
+        var pass = "1234";
+        var cipher = cryptoConverter.convertToDatabaseColumn("5566");
 
         assertNotEquals(pass, cryptoConverter.convertToEntityAttribute(cipher));
     }
 
     @Test
     void convert_to_entity_attribute_success() {
-        String cipher = "3+G3iV8qamedsXA0IGBfjQ==";
-        String pass = cryptoConverter.convertToEntityAttribute(cipher);
+        var cipher = "3+G3iV8qamedsXA0IGBfjQ==";
+        var pass = cryptoConverter.convertToEntityAttribute(cipher);
 
         assertEquals(cipher, cryptoConverter.convertToDatabaseColumn(pass));
     }
 
     @Test
     void convert_to_entity_attribute_fail() {
-        String cipher = "3+G3iV8qamedsXA0IGBfjW==";
-        String pass = cryptoConverter.convertToEntityAttribute("3+G3iV8qamedsXA0IGBfjQ==");
+        var cipher = "3+G3iV8qamedsXA0IGBfjW==";
+        var pass = cryptoConverter.convertToEntityAttribute("3+G3iV8qamedsXA0IGBfjQ==");
 
         assertNotEquals(cipher, cryptoConverter.convertToDatabaseColumn(pass));
     }

@@ -29,7 +29,7 @@ public class JwtUtil {
     }
 
     private String createToken(String subject, Map<String, Object> claims) {
-        Date creationDate = new Date();
+        var creationDate = new Date();
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -41,7 +41,7 @@ public class JwtUtil {
     }
 
     private Date createExpirationDate(Date creationDate) {
-        long expirationSeconds = Long.parseLong(appConfig.getJwtExpiration());
+        var expirationSeconds = Long.parseLong(appConfig.getJwtExpiration());
         return new Date(creationDate.getTime() + expirationSeconds * 1000);
     }
 
