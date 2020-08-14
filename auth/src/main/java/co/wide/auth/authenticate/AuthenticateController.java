@@ -28,7 +28,7 @@ public class AuthenticateController implements AuthenticateApi {
                 AuthenticateUserRequest::getPassword, request,
                 AuthenticationException::new);
 
-        AuthenticateUserResponse response = new AuthenticateUserResponse();
+        var response = new AuthenticateUserResponse();
         response.setToken(jwtUtil.generateTokenByUser(user));
 
         return ResponseEntity.ok(response);
