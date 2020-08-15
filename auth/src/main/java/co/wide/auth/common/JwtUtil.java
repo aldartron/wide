@@ -41,8 +41,8 @@ public class JwtUtil {
     }
 
     private Date createExpirationDate(Date creationDate) {
-        var expirationSeconds = Long.parseLong(appConfig.getJwtExpiration());
-        return new Date(creationDate.getTime() + expirationSeconds * 1000);
+        return new Date(creationDate.getTime() +
+                Long.parseLong(appConfig.getJwtExpiration()) * 1000);
     }
 
     private SecretKey getHmacShaKey() {

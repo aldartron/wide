@@ -37,7 +37,7 @@ class JwtUtilTest {
     public void jwt_generate_token_by_user_success() {
         var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
-        userEntity.setLogin("Dog");
+        userEntity.setUsername("Dog");
         userEntity.setRole("TESTER");
 
         var token = jwtUtil.generateTokenByUser(userEntity);

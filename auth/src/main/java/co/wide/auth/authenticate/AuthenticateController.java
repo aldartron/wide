@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.naming.AuthenticationException;
-import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,34 +18,34 @@ public class AuthenticateController implements AuthenticateApi {
     private final JwtUtil jwtUtil;
 
     @Override
-    public ResponseEntity<AuthenticateUserResponse> login(AuthenticateUserRequest request) throws Exception {
-        var user = userService.getUser(request.getLogin())
+    public ResponseEntity<AuthenticateUserResponse> login(
+            AuthenticateUserRequest request) throws Exception {
+
+        var user = userService.getUser(request.getUsername())
                 .orElseThrow(AuthenticationException::new);
 
         userService.checkUser(UserEntity::getPassword, user,
                 AuthenticateUserRequest::getPassword, request,
                 AuthenticationException::new);
 
-        var response = new AuthenticateUserResponse();
-        response.setToken(jwtUtil.generateTokenByUser(user));
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new AuthenticateUserResponse()
+                .token(jwtUtil.generateTokenByUser(user)));
     }
 
     @Override
-    public ResponseEntity<AuthenticateUserResponse> registration(@Valid AuthenticateUserRegistrationRequest request) throws Exception {
-        Optional<UserEntity> user = userService.getUser(request.getLogin());
+    public ResponseEntity<AuthenticateUserResponse> registration(
+            AuthenticateUserRegistrationRequest request) {
+
+        var user = userService.getUser(request.getUsername());
 
         if (user.isPresent()) {
             throw new RegistrationException();
         }
 
         var newUser = userService.createUser(request);
-        var response = new AuthenticateUserResponse();
 
-        response.setToken(jwtUtil.generateTokenByUser(newUser));
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new AuthenticateUserResponse()
+                .token(jwtUtil.generateTokenByUser(newUser)));
     }
 
 }

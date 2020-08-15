@@ -11,8 +11,8 @@ public class AppConfig {
     @Value("${jwt.key}")
     private String jwtKey;
 
-    @Value("${auth.login}")
-    private String authLogin;
+    @Value("${auth.username}")
+    private String authUsername;
 
     @Value("${auth.password}")
     private String authPassword;

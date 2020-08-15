@@ -15,15 +15,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
     @Override
-    public Optional<UserEntity> getUser(String login) {
-        return repository.findByLogin(login);
+    public Optional<UserEntity> getUser(String username) {
+        return repository.findByUsername(username);
     }
 
     @Override
     public UserEntity createUser(AuthenticateUserRegistrationRequest request) {
         var userEntity = new UserEntity();
 
-        userEntity.setLogin(request.getLogin());
+        userEntity.setUsername(request.getUsername());
         userEntity.setPassword(request.getPassword());
         userEntity.setRole(request.getRole());
 

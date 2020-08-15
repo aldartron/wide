@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 public interface UserService {
 
-    Optional<UserEntity> getUser(String login);
+    Optional<UserEntity> getUser(String username);
 
     UserEntity createUser(AuthenticateUserRegistrationRequest request);
 

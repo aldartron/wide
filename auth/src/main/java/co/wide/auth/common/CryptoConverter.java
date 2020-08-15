@@ -24,6 +24,7 @@ public class CryptoConverter implements AttributeConverter<String, String> {
         try {
             Cipher cipher = Cipher.getInstance(appConfig.getCryptoEncryptCipher());
             cipher.init(Cipher.ENCRYPT_MODE, key);
+
             return Base64.getEncoder().encodeToString(cipher.doFinal(ccNumber.getBytes()));
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -44,4 +45,5 @@ public class CryptoConverter implements AttributeConverter<String, String> {
             throw new RuntimeException(e);
         }
     }
+
 }

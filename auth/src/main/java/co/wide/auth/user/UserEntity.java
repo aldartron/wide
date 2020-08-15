@@ -19,7 +19,7 @@ public class UserEntity {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
-    private String login;
+    private String username;
 
     @Convert(converter = CryptoConverter.class)
     private String password;

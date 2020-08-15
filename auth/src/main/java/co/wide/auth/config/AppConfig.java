@@ -14,8 +14,8 @@ public class AppConfig {
     @Value("${jwt.expiration:86400}")
     private String jwtExpiration;
 
-    @Value("${auth.login}")
-    private String authLogin;
+    @Value("${auth.username}")
+    private String authUsername;
 
     @Value("${auth.password}")
     private String authPassword;

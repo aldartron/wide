@@ -8,7 +8,6 @@ import lombok.EqualsAndHashCode;
 public class AuthenticateUserRegistrationRequest extends AuthenticateUserRequest {
 
     private static final String DEFAULT_ROLE = "PERSON";
-
     private String role = DEFAULT_ROLE;
 
 }

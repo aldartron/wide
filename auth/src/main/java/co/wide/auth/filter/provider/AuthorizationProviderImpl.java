@@ -21,17 +21,17 @@ public class AuthorizationProviderImpl implements AuthorizationProvider {
             header = header.substring(7);
         }
 
-        List<String> loginAndPassword = decodeLoginAndPasswordUtf8(header);
+        List<String> usernameAndPassword = decodeUsernameAndPasswordUtf8(header);
 
-        if (loginAndPassword.size() != 2) {
+        if (usernameAndPassword.size() != 2) {
             return false;
         }
 
-        return loginAndPassword.contains(appConfig.getAuthLogin()) &&
-                loginAndPassword.contains(appConfig.getAuthPassword());
+        return usernameAndPassword.contains(appConfig.getAuthUsername()) &&
+                usernameAndPassword.contains(appConfig.getAuthPassword());
     }
 
-    private List<String> decodeLoginAndPasswordUtf8(String header) {
+    private List<String> decodeUsernameAndPasswordUtf8(String header) {
         try {
             byte[] decode = Base64.getDecoder().decode(header);
             String auth = new String(decode, StandardCharsets.UTF_8);

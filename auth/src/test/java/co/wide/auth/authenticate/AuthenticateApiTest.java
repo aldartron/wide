@@ -40,22 +40,22 @@ class AuthenticateApiTest {
 
     private String getAuthorizationHeader() {
         return HttpHeaders.encodeBasicAuth(
-                appConfig.getAuthLogin(), appConfig.getAuthPassword(), StandardCharsets.UTF_8);
+                appConfig.getAuthUsername(), appConfig.getAuthPassword(), StandardCharsets.UTF_8);
     }
 
     @Test
     public void login_success() throws Exception {
         var request = new AuthenticateUserRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
 
         var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
-        userEntity.setLogin("Dog");
+        userEntity.setUsername("Dog");
         userEntity.setPassword("123");
         userEntity.setRole("TESTER");
 
-        Mockito.when(userService.getUser(request.getLogin()))
+        Mockito.when(userService.getUser(request.getUsername()))
                 .thenReturn(Optional.of(userEntity));
 
         mockMvc.perform(post("/api/auth/login")
@@ -71,10 +71,10 @@ class AuthenticateApiTest {
     @Test
     public void login_not_valid() throws Exception {
         var request = new AuthenticateUserRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
 
-        Mockito.when(userService.getUser(request.getLogin()))
+        Mockito.when(userService.getUser(request.getUsername()))
                 .thenThrow(new AuthenticationException());
 
         mockMvc.perform(post("/api/auth/login")
@@ -91,16 +91,16 @@ class AuthenticateApiTest {
     @Test
     public void login_password_not_valid() throws Exception {
         var request = new AuthenticateUserRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
 
         var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
-        userEntity.setLogin("Dog");
+        userEntity.setUsername("Dog");
         userEntity.setPassword("not valid");
         userEntity.setRole("TESTER");
 
-        Mockito.when(userService.getUser(request.getLogin()))
+        Mockito.when(userService.getUser(request.getUsername()))
                 .thenReturn(Optional.of(userEntity));
 
         Mockito.doThrow(new AuthenticationException())
@@ -125,7 +125,7 @@ class AuthenticateApiTest {
     @Test
     public void login_header_empty() throws Exception {
         var request = new AuthenticateUserRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
 
         mockMvc.perform(post("/api/auth/login")
@@ -139,7 +139,7 @@ class AuthenticateApiTest {
     @Test
     public void login_header_not_valid() throws Exception {
         var request = new AuthenticateUserRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
 
         mockMvc.perform(post("/api/auth/login")
@@ -169,17 +169,17 @@ class AuthenticateApiTest {
     @Test
     public void registration_success() throws Exception {
         var request = new AuthenticateUserRegistrationRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
         request.setRole("TESTER");
 
         var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
-        userEntity.setLogin("Dog");
+        userEntity.setUsername("Dog");
         userEntity.setPassword("123");
         userEntity.setRole("TESTER");
 
-        Mockito.when(userService.getUser(request.getLogin()))
+        Mockito.when(userService.getUser(request.getUsername()))
                 .thenReturn(Optional.empty());
 
         Mockito.when(userService.createUser(request))
@@ -198,17 +198,17 @@ class AuthenticateApiTest {
     @Test
     public void registration_busy() throws Exception {
         var request = new AuthenticateUserRegistrationRequest();
-        request.setLogin("Dog");
+        request.setUsername("Dog");
         request.setPassword("123");
         request.setRole("TESTER");
 
         var userEntity = new UserEntity();
         userEntity.setId(UUID.nameUUIDFromBytes("Dog".getBytes()));
-        userEntity.setLogin("Dog");
+        userEntity.setUsername("Dog");
         userEntity.setPassword("123");
         userEntity.setRole("TESTER");
 
-        Mockito.when(userService.getUser(request.getLogin()))
+        Mockito.when(userService.getUser(request.getUsername()))
                 .thenReturn(Optional.of(userEntity));
 
         mockMvc.perform(post("/api/auth/registration")
