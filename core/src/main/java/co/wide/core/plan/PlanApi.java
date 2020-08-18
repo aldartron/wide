@@ -10,6 +10,10 @@ public interface PlanApi {
     @PostMapping
     Plan createPlan(@RequestParam String name);
 
+//    Можем создавать план без названия?
+//    @PostMapping
+//    Plan createPlan(@RequestParam String token);
+
     @GetMapping
     List<Plan> getPlans();
 

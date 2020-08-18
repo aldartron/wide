@@ -1,5 +1,6 @@
 package co.wide.core.card;
 
+import co.wide.core.plan.Plan;
 import co.wide.core.resource.Resource;
 import lombok.Data;
 
@@ -15,5 +16,5 @@ public class Card {
     private String title;
     private List<Resource> resources;
     private String comment;
-//    private WideMap wideMap;
+    private Plan plan;
 }
