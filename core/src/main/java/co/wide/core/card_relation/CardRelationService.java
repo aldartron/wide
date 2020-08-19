@@ -1,8 +1,8 @@
 package co.wide.core.card_relation;
 
-import co.wide.core.card.CardEntity;
+import co.wide.core.card.Card;
 
 public interface CardRelationService {
 
-    CardRelation createCardRelation(CardEntity first, CardEntity second);
+    CardRelation createCardRelation(Card first, Card second);
 }
