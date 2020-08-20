@@ -1,8 +1,11 @@
 package co.wide.core.card_relation;
 
-import co.wide.core.card.Card;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/api/card/relation")
 public interface CardRelationApi {
 
-    CardRelation saveCardRelation(Card first, Card second);
+    @PostMapping
+    CardRelation saveCardRelation(Long firstCardId, Long secondCardId);
 }
