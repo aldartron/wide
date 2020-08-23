@@ -13,7 +13,8 @@ import java.util.List;
 public class CardEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_generator")
+    @SequenceGenerator(name = "card_generator", sequenceName = "card_id_seq")
     private Long id;
     private String title;
     private String comment;

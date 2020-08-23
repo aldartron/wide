@@ -1,4 +1,4 @@
-package co.wide.core.card_relation;
+package co.wide.core.card.relation;
 
 import co.wide.core.card.CardEntity;
 import lombok.Data;
@@ -11,7 +11,8 @@ import javax.persistence.*;
 public class CardRelationEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_relation_generator")
+    @SequenceGenerator(name = "card_relation_generator", sequenceName = "card_relation_id_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne

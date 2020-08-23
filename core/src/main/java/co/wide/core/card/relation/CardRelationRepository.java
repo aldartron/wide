@@ -1,4 +1,4 @@
-package co.wide.core.card_relation;
+package co.wide.core.card.relation;
 
 import co.wide.core.card.CardEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
