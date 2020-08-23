@@ -5,6 +5,9 @@ import co.wide.core.card.CardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class CardRelationServiceImpl implements CardRelationService {
@@ -20,5 +23,16 @@ public class CardRelationServiceImpl implements CardRelationService {
         entity.setSecond(cardMapper.toEntity(second));
 
         return cardRelationMapper.fromEntity(cardRelationRepository.save(entity));
+    }
+
+    @Override
+    public List<CardRelation> getCardRelations(Card card) {
+        if (card == null) return null;
+
+        return cardRelationRepository
+                .findByFirstOrSecondOrderById(cardMapper.toEntity(card), cardMapper.toEntity(card))
+                .stream()
+                .map(cardRelationMapper::fromEntity)
+                .collect(Collectors.toList());
     }
 }
