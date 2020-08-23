@@ -1,5 +1,7 @@
 package co.wide.core.card_relation;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,5 +13,6 @@ public interface CardRelationApi {
     @PostMapping
     CardRelation saveCardRelation(Long firstCardId, Long secondCardId);
 
-    List<CardRelation> getCardRelations(Long cardId);
+    @GetMapping("/{cardId}")
+    List<CardRelation> getCardRelations(@PathVariable Long cardId);
 }
