@@ -12,7 +12,7 @@ public class CardRelationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_relation_generator")
-    @SequenceGenerator(name = "card_relation_generator", sequenceName = "card_relation_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "card_relation_generator", sequenceName = "card_relation_id_seq")
     private Long id;
 
     @ManyToOne
