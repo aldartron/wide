@@ -24,4 +24,8 @@ public class CardRelationEntity {
     private CardEntity right;
 
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private CardRelationType type;
+
 }
