@@ -16,12 +16,12 @@ public class CardRelationEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "first_card_id")
-    private CardEntity first;
+    @JoinColumn(name = "left_card_id")
+    private CardEntity left;
 
     @ManyToOne
-    @JoinColumn(name = "second_card_id")
-    private CardEntity second;
+    @JoinColumn(name = "right_card_id")
+    private CardEntity right;
 
-    private String relationship;
+    private String description;
 }

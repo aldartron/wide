@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CardRelationService {
 
-    CardRelation createCardRelation(Card first, Card second);
+    CardRelation createCardRelation(Card left, Card right);
 
     List<CardRelation> getCardRelations(Card card);
 }

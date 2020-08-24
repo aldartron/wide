@@ -11,8 +11,8 @@ import lombok.Data;
 public class CardRelation {
 
     private Long id;
-    private Card first;
-    private Card second;
-    private String relationship;
-    //TODO "RelationType" тип связи, связь этих карт
+    private Card left;
+    private Card right;
+    private String description;
+    private CardRelationType relationType;
 }

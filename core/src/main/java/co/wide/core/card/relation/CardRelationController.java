@@ -14,9 +14,9 @@ public class CardRelationController implements CardRelationApi {
     private final CardService cardService;
 
     @Override
-    public CardRelation saveCardRelation(Long firstCardId, Long secondCardId) {
-        return cardRelationService.createCardRelation(cardService.getById(firstCardId),
-                cardService.getById(secondCardId));
+    public CardRelation saveCardRelation(Long leftCardId, Long rightCardId) {
+        return cardRelationService.createCardRelation(cardService.getById(leftCardId),
+                cardService.getById(rightCardId));
     }
 
     @Override

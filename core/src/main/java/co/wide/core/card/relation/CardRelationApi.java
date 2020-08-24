@@ -11,7 +11,7 @@ import java.util.List;
 public interface CardRelationApi {
 
     @PostMapping
-    CardRelation saveCardRelation(Long firstCardId, Long secondCardId);
+    CardRelation saveCardRelation(Long leftCardId, Long rightCardId);
 
     @GetMapping("/{cardId}")
     List<CardRelation> getCardRelations(@PathVariable Long cardId);

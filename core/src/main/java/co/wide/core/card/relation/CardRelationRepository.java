@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CardRelationRepository extends JpaRepository<CardRelationEntity, Long> {
 
-    List<CardRelationEntity> findByFirstOrSecondOrderById(CardEntity first, CardEntity second);
+    List<CardRelationEntity> findByLeftOrRightOrderById(CardEntity left, CardEntity right);
 }

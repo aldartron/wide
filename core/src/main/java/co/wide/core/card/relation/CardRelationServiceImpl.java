@@ -17,10 +17,10 @@ public class CardRelationServiceImpl implements CardRelationService {
     private final CardMapper cardMapper;
 
     @Override
-    public CardRelation createCardRelation(Card first, Card second) {
+    public CardRelation createCardRelation(Card left, Card right) {
         var entity = new CardRelationEntity();
-        entity.setFirst(cardMapper.toEntity(first));
-        entity.setSecond(cardMapper.toEntity(second));
+        entity.setLeft(cardMapper.toEntity(left));
+        entity.setRight(cardMapper.toEntity(right));
 
         return cardRelationMapper.fromEntity(cardRelationRepository.save(entity));
     }
@@ -30,7 +30,7 @@ public class CardRelationServiceImpl implements CardRelationService {
         if (card == null) return null;
 
         return cardRelationRepository
-                .findByFirstOrSecondOrderById(cardMapper.toEntity(card), cardMapper.toEntity(card))
+                .findByLeftOrRightOrderById(cardMapper.toEntity(card), cardMapper.toEntity(card))
                 .stream()
                 .map(cardRelationMapper::fromEntity)
                 .collect(Collectors.toList());
