@@ -8,6 +8,6 @@ public interface PlanService {
 
     List<Plan> getPlans();
 
-    Plan getPlan(Long id);
+    PlanSimple getSimplePlan(Long id);
 
 }

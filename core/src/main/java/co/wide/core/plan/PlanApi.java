@@ -18,6 +18,6 @@ public interface PlanApi {
     List<Plan> getPlans();
 
     @GetMapping("/{id}")
-    Plan getPlan(@PathVariable Long id);
+    PlanSimple getSimplePlan(@PathVariable Long id);
     
 }

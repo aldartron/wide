@@ -27,9 +27,8 @@ public class PlanServiceImpl implements PlanService {
     }
 
     @Override
-    public Plan getPlan(Long id) {
-        return planMapper.fromEntity(
-                planRepository.getOne(id));
+    public PlanSimple getSimplePlan(Long id) {
+        // TODO: Go, go, Sodnom!
+        return null;
     }
-
 }

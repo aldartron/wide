@@ -21,8 +21,8 @@ public class PlanController implements PlanApi {
     }
 
     @Override
-    public Plan getPlan(Long id) {
-        return planService.getPlan(id);
+    public PlanSimple getSimplePlan(Long id) {
+        return planService.getSimplePlan(id);
     }
 
 }
