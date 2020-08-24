@@ -5,6 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonBuilder {
 
     public static String convertToJson(Object object) {
+        if (object == null) {
+            return "";
+        }
+
         try {
             return new ObjectMapper().writeValueAsString(object);
         } catch (Exception e) {

@@ -85,7 +85,7 @@ class UserServiceTest {
         var newUser = userService.createUser(request);
 
         assertEquals(newUser.getUsername(), request.getUsername());
-        assertEquals(newUser.getUsername(), request.getPassword());
+        assertEquals(newUser.getPassword(), request.getPassword());
         assertEquals(newUser.getRole(), request.getRole());
     }
 

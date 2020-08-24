@@ -1,12 +1,12 @@
 package co.wide.auth.authenticate;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.Builder;
+import lombok.Getter;
 
-@Data
-@Accessors(fluent = true)
+@Getter
+@Builder
 public class AuthenticateUserResponse {
 
-    private String token;
+    private final String token;
 
 }

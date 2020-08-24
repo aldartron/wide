@@ -75,7 +75,7 @@ class AuthenticateApiTest {
         request.setPassword("123");
 
         Mockito.when(userService.getUser(request.getUsername()))
-                .thenThrow(new AuthenticationException());
+                .thenReturn(Optional.empty());
 
         mockMvc.perform(post("/api/auth/login")
                 .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)

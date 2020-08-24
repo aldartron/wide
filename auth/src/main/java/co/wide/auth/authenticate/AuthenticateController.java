@@ -28,8 +28,9 @@ public class AuthenticateController implements AuthenticateApi {
                 AuthenticateUserRequest::getPassword, request,
                 AuthenticationException::new);
 
-        return ResponseEntity.ok(new AuthenticateUserResponse()
-                .token(jwtUtil.generateTokenByUser(user)));
+        return ResponseEntity.ok(AuthenticateUserResponse.builder()
+                .token(jwtUtil.generateTokenByUser(user))
+                .build());
     }
 
     @Override
@@ -44,8 +45,9 @@ public class AuthenticateController implements AuthenticateApi {
 
         var newUser = userService.createUser(request);
 
-        return ResponseEntity.ok(new AuthenticateUserResponse()
-                .token(jwtUtil.generateTokenByUser(newUser)));
+        return ResponseEntity.ok(AuthenticateUserResponse.builder()
+                .token(jwtUtil.generateTokenByUser(newUser))
+                .build());
     }
 
 }

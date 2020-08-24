@@ -42,6 +42,8 @@ class JsonBuilderTest {
     public void convert_to_json_empty() {
         var json = JsonBuilder.convertToJson(null);
 
+        System.out.println(json);
+
         assertTrue(StringUtils.isBlank(json));
     }
 
