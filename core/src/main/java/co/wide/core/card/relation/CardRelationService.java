@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface CardRelationService {
 
-    CardRelation createCardRelation(Card left, Card right);
+    List<CardRelation> getCoupleRelations(Card card);
 
-    List<CardRelation> getCardRelations(Card card);
+    List<CardRelation> getNestedRelations(Card card);
+
+    CardRelation createCardRelationOfType(Card leftCardId, Card rightCardId, CardRelationType relationType);
 }

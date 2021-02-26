@@ -14,13 +14,22 @@ public class CardRelationController implements CardRelationApi {
     private final CardService cardService;
 
     @Override
-    public CardRelation saveCardRelation(Long leftCardId, Long rightCardId) {
-        return cardRelationService.createCardRelation(cardService.getById(leftCardId),
-                cardService.getById(rightCardId));
+    public CardRelation saveCardRelation(CardRelationRequest cardRelationRequest) {
+        return cardRelationService.createCardRelationOfType(
+                cardService.getById(cardRelationRequest.getLeftCardId()),
+                cardService.getById(cardRelationRequest.getRightCardId()),
+                cardRelationRequest.getRelationType()
+        );
     }
 
     @Override
-    public List<CardRelation> getCardRelations(Long cardId) {
-        return cardRelationService.getCardRelations(cardService.getById(cardId));
+    public List<CardRelation> getCoupleRelations(Long cardId) {
+        return cardRelationService.getCoupleRelations(cardService.getById(cardId));
     }
+
+    @Override
+    public List<CardRelation> getNestedRelations(Long cardId) {
+        return cardRelationService.getNestedRelations(cardService.getById(cardId));
+    }
+
 }

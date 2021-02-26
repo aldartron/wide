@@ -5,6 +5,7 @@ import co.wide.core.card.CardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,22 +18,41 @@ public class CardRelationServiceImpl implements CardRelationService {
     private final CardMapper cardMapper;
 
     @Override
-    public CardRelation createCardRelation(Card left, Card right) {
-        var entity = new CardRelationEntity();
-        entity.setLeft(cardMapper.toEntity(left));
-        entity.setRight(cardMapper.toEntity(right));
+    public CardRelation createCardRelationOfType(Card left, Card right, CardRelationType relationType) {
+        var relationEntity = new CardRelationEntity();
+        relationEntity.setLeft(cardMapper.toEntity(left));
+        relationEntity.setRight(cardMapper.toEntity(right));
+        relationEntity.setType(relationType);
 
-        return cardRelationMapper.fromEntity(cardRelationRepository.save(entity));
+        return cardRelationMapper.fromEntity(
+                cardRelationRepository.save(relationEntity)
+        );
     }
 
     @Override
-    public List<CardRelation> getCardRelations(Card card) {
-        if (card == null) return null;
+    public List<CardRelation> getCoupleRelations(Card card) {
+        if (card == null) {
+            return Collections.emptyList();
+        }
 
         return cardRelationRepository
-                .findByLeftOrRightOrderById(cardMapper.toEntity(card), cardMapper.toEntity(card))
+                .findByLeftOrRightOfType(cardMapper.toEntity(card), CardRelationType.COUPLE)
                 .stream()
                 .map(cardRelationMapper::fromEntity)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<CardRelation> getNestedRelations(Card card) {
+        if (card == null) {
+            return Collections.emptyList();
+        }
+
+        return cardRelationRepository
+                .findByLeftOfType(cardMapper.toEntity(card), CardRelationType.NESTED)
+                .stream()
+                .map(cardRelationMapper::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 }

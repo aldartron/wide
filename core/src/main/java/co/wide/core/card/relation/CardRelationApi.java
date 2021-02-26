@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/api/card/relation")
+@RequestMapping("/api/card/")
 public interface CardRelationApi {
 
     @PostMapping
-    CardRelation saveCardRelation(Long leftCardId, Long rightCardId);
+    CardRelation saveCardRelation(CardRelationRequest cardRelationRequest);
 
-    @GetMapping("/{cardId}")
-    List<CardRelation> getCardRelations(@PathVariable Long cardId);
+    @GetMapping("/{cardId}/couple")
+    List<CardRelation> getCoupleRelations(@PathVariable Long cardId);
+
+    @GetMapping("/{cardId}/nested")
+    List<CardRelation> getNestedRelations(@PathVariable Long cardId);
+
 }

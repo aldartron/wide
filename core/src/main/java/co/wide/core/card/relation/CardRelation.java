@@ -4,8 +4,7 @@ import co.wide.core.card.Card;
 import lombok.Data;
 
 /**
- * Класс просто хранит в себе ссылки
- * на две карты и описание их связи
+ * Contains links to bounded cards with type of the relation
  */
 @Data
 public class CardRelation {
@@ -15,4 +14,5 @@ public class CardRelation {
     private Card right;
     private String description;
     private CardRelationType relationType;
+
 }
