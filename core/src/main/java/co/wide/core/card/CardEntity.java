@@ -18,6 +18,7 @@ public class CardEntity {
     private Long id;
     private String title;
     private String comment;
+
     @ManyToOne
     @JoinColumn(name = "person_id")
     private PersonEntity person;

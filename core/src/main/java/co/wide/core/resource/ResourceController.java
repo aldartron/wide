@@ -11,11 +11,20 @@ public class ResourceController implements ResourceApi {
     private final CardService cardService;
 
     @Override
-    public Resource addToCard(Long cardId, Resource resource) {
+    public Resource save(Resource resource) {
         return resourceService.createResourceForCard(
-                resource,
-                cardService.getById(cardId)
+                resource, cardService.getById(resource.getCardId())
         );
+    }
+
+    @Override
+    public Resource delete(Long resourceId) {
+        return resourceService.deleteById(resourceId);
+    }
+
+    @Override
+    public Resource update(Resource resource) {
+        return resourceService.update(resource);
     }
 
 }

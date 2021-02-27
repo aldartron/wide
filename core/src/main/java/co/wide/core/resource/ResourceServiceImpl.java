@@ -34,11 +34,25 @@ class ResourceServiceImpl implements ResourceService {
 
     @Override
     public Resource createResourceForCard(@NonNull Resource resource, Card card) {
-        ResourceEntity entity = resourceMapper.toEntity( resource );
-        entity.setCard(cardMapper.toEntity( card ));
+        ResourceEntity entity = resourceMapper.toEntity(resource);
+        entity.setCard(cardMapper.toEntity(card));
         return resourceMapper.fromEntity(
                 resourceRepository.save(entity)
         );
     }
 
+    @Override
+    public Resource deleteById(Long resourceId) {
+        Resource resourceToDelete = resourceMapper.fromEntity(
+                resourceRepository.getOne(resourceId)
+        );
+        resourceRepository.deleteById(resourceId);
+        return resourceToDelete;
+    }
+
+    @Override
+    public Resource update(Resource resource) {
+        ResourceEntity resourceUpdatedEntity = resourceMapper.toEntity(resource);
+        return resourceMapper.fromEntity(resourceRepository.save(resourceUpdatedEntity));
+    }
 }

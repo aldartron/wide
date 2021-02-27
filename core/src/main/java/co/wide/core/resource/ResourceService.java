@@ -13,4 +13,8 @@ public interface ResourceService {
 
     Resource createResourceForCard(Resource resource, Card card);
 
+    Resource deleteById(Long resourceId);
+
+    Resource update(Resource resource);
+
 }

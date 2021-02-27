@@ -6,6 +6,7 @@ import lombok.Data;
 public class Resource {
 
     private Long id;
+    private Integer order;
     private String title;
     private String link;
     private ResourceType type;

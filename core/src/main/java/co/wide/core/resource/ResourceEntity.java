@@ -13,6 +13,7 @@ public class ResourceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long order;
     private String title;
     private String link;
     @Enumerated(EnumType.STRING)
